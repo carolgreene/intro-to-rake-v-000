@@ -1,7 +1,11 @@
+require 'pry'
 
-namespace :greeting do
+task :environment do
+  require_relative './config/environment'
+end
 
   desc 'outputs hello to the terminal'
+  namespace :greeting do
   task :hello do
     puts "hello from Rake!"
   end
@@ -12,13 +16,7 @@ namespace :greeting do
   end
 end
 
-
-
 namespace :db do
-  task :environment do
-    require_relative './config/environment'
-  end
-
   desc 'migrate changes to your database'
   task :migrate => :environment do
     Student.create_table
